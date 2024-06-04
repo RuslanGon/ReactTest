@@ -1,0 +1,13 @@
+.mailbox {
+    border: 1px solid black;
+    padding: 1px 20px;
+}
+
+.title {
+    font-size: 30px;
+    color: black;
+}
+
+.title:hover {
+    color: white;
+}

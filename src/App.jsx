@@ -10,9 +10,9 @@ function App() {
 
   return (
     <div>
-      <MailBox boxtitle='Meest Express' mailBoxCount={5} boxUsers={MeestExpressUsers} />
-      <MailBox boxtitle='Nova Poshta' mailBoxCount={3} boxUsers={NovaPoshta} />
-      <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} boxUsers={UkrPoshta} />
+      <MailBox boxtitle='Meest Express' mailBoxCount={5} users={MeestExpressUsers} />
+      <MailBox boxtitle='Nova Poshta' mailBoxCount={3} users={NovaPoshta} />
+      <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} users={UkrPoshta} />
     </div>
   )
 }

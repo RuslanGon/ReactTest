@@ -1,6 +1,13 @@
 .mailbox {
     border: 1px solid black;
     padding: 1px 20px;
+    margin-bottom: 5px;
+    width: 300px;
+}
+
+
+.mailbox.full {
+    background-color: rgb(230, 111, 111);
 }
 
 .title {
@@ -11,3 +18,4 @@
 .title:hover {
     color: white;
 }
+

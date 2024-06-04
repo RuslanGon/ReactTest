@@ -7,17 +7,21 @@ const MailBox = ({boxtitle, mailBoxCount, users}) => {
 
   const isMailBoxIsFull = mailBoxCount === 0
 
-
-
   return (
-    <div className={clsx(css.mailbox, {
-      [css.full] : isMailBoxIsFull
-    })}>
-      <h2 className={css.title}>{boxtitle}</h2>
-      {mailBoxCount === 0 ? <p>Сейчас нет активных ячеек</p> : <p>Количество активных ячеек: {mailBoxCount}</p> }
-      <MailBoxList users={users} />
-    </div>
-  )
+      <div
+        className={clsx(css.mailbox, {
+          [css.full]: isMailBoxIsFull,
+        })}
+      >
+        <h2 className={css.title}>{boxtitle}</h2>
+        {mailBoxCount === 0 ? (
+          <p>Сейчас нет активных ячеек</p>
+        ) : (
+          <p>Количество активных ячеек: {mailBoxCount}</p>
+        )}
+        <MailBoxList users={users} />
+      </div>
+  );
 }
 
 export default MailBox

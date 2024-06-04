@@ -1,9 +1,9 @@
 
 import './App.css'
 import MailBox from './components/MailBox/MailBox'
-import MeestExpressUsers from '../meestExpress.json'
-import NovaPoshta from '../novaPoshta.json'
-import UkrPoshta from '../ukrPoshta.json'
+import MeestExpressUsers from '../meest.json'
+import NovaPoshta from '../nova.json'
+import UkrPoshta from '../Ukr.json'
 
 
 function App() {

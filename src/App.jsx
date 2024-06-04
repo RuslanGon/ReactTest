@@ -6,7 +6,9 @@ function App() {
 
   return (
     <div>
-      <MailBox />
+      <MailBox boxtitle='Meest Express' mailBoxCount={5} />
+      <MailBox boxtitle='Nova Poshta' mailBoxCount={3} />
+      <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} />
     </div>
   )
 }

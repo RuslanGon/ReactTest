@@ -30,6 +30,8 @@ function App() {
 setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
   }
 
+  const drinksTotal = drinks.beer + drinks.whisky + drinks.wine
+
   return (
     
     <div>
@@ -39,7 +41,7 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
       
       <button onClick={handleIncrementCounter}>increment {counter}</button>
       <button onClick={handleDecrementCounter}>decrement</button>
-      <DrinksValues drinks={drinks} />
+      <DrinksValues drinks={drinks} drinksTotal={drinksTotal} />
       <DrinksCounter handleLogDrink={handleLogDrink} />
     </div>
   )

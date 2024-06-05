@@ -7,11 +7,24 @@ import UkrPoshta from '../Ukr.json'
 import DrinksCounter from './components/DrinksCounter/DrinksCounter'
 import DrinksValues from './components/DrinksValues/DrinksValues'
 import { useEffect, useState } from 'react'
+import { nanoid } from 'nanoid'
 
 
 function App() {
 
   const initialDrinks = {beer: 0, whisky: 0, wine: 0}
+
+  const [users, setUsers] = useState(MeestExpressUsers)
+
+  const onAddUser = (formData) => {
+const finalUser = {
+  ...formData,
+  id: nanoid()
+}
+
+setUsers([...users, finalUser])
+
+  }
 
   const [counter, setCounter] = useState(0)
   const [drinks, setDrinks] = useState(() => {
@@ -65,6 +78,8 @@ localStorage.setItem('drinksValues', JSON.stringify(drinks))
       <DrinksValues drinks={drinks} total={drinksTotal}  />
       <DrinksCounter handleLogDrink={handleLogDrink} toglleBarViseble={toglleBarViseble}          handleReset={handleReset} drinksTotal={drinksTotal} />
       </>}
+      <br />
+      <MailBox boxtitle='Meest Express' mailBoxCount={3} users={users} />
       
     </div>
   )

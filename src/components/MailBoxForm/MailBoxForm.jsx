@@ -13,6 +13,8 @@ const handleSubmit = (event) => {
     // console.log(formData);
 
     onAddUser(formData)
+    
+    event.currentTarget.reset()
 }
 
   return (
@@ -33,7 +35,6 @@ const handleSubmit = (event) => {
             <br />
             <button type="submit">Add user</button>
         </form>
-        
     </div>
   )
 }

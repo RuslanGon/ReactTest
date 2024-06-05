@@ -49,7 +49,7 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
       <MailBox boxtitle='Nova Poshta' mailBoxCount={3} users={NovaPoshta} />
       <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} users={UkrPoshta} />
 
-      <button onClick={toglleBarViseble}>{isVisibleBar ? 'Hide' : 'Show'}Show mini-bar</button>
+      <button onClick={toglleBarViseble}>{isVisibleBar ? 'Hide' : 'Show'} mini-bar</button>
       <br />
       {isVisibleBar && <>
       <button onClick={handleIncrementCounter}>increment {counter}</button>

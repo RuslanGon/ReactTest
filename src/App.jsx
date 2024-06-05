@@ -11,10 +11,14 @@ import { useEffect, useState } from 'react'
 
 function App() {
 
-  // const initialDrinks = {beer: 3, whisky: 2, wine: 1}
+  const initialDrinks = {beer: 0, whisky: 0, wine: 0}
 
   const [counter, setCounter] = useState(0)
-  const [drinks, setDrinks] = useState({beer: 0, whisky: 0, wine: 0})
+  const [drinks, setDrinks] = useState(() => {
+  const stringyDrinks = localStorage.getItem('drinksValues')
+  const parseDrinks = JSON.parse(stringyDrinks) ?? initialDrinks
+  return parseDrinks
+  })
 
   const handleIncrementCounter = () => {
     setCounter(counter + 1);
@@ -38,9 +42,9 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
     setIsVisibleBar(!isVisibleBar);
   };
 
-  useEffect(() => {
-    console.log('Ura');
-  }, [drinksTotal])
+ useEffect(() => {
+localStorage.setItem('drinksValues', JSON.stringify(drinks))
+ }, [drinks])
 
   return (
     

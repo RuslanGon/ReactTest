@@ -73,6 +73,18 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
     setIsVisibleBar(!isVisibleBar);
   };
 
+  const [filter, setFilter] = useState('')
+
+  const onChangeFilter = (event) => {
+setFilter(event.target.value)
+  }
+
+  const filterUsers = users.filter((user) =>
+    user.userName.toLowerCase().includes(filter.toLowerCase()) ||
+    user.userEmail.toLowerCase().includes(filter.toLowerCase())
+  );
+
+
  useEffect(() => {
 localStorage.setItem('drinksValues', JSON.stringify(drinks))
  }, [drinks])
@@ -96,9 +108,9 @@ localStorage.setItem('drinksValues', JSON.stringify(drinks))
       <MailBoxForm onAddUser={onAddUser} />
       <section>
         <h2>Search by name or email</h2>
-        <input type="text" name=""  />
+        <input type="text" name="" placeholder='Search' value={filter} onChange={onChangeFilter} />
       </section>
-      <MailBox boxtitle='Meest Express' mailBoxCount={3} users={users} onDeleteUser={onDeleteUser} />
+      <MailBox boxtitle='Meest Express' mailBoxCount={3} users={filterUsers} onDeleteUser={onDeleteUser} />
     </div>
   )
 }

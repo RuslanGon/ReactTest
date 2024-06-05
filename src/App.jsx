@@ -32,6 +32,7 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
 
   const drinksTotal = drinks.beer + drinks.whisky + drinks.wine
 
+  
   const [isVisibleBar, setIsVisibleBar] = useState(false);
   const toglleBarViseble = () => {
     setIsVisibleBar(!isVisibleBar);

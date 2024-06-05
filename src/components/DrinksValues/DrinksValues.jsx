@@ -2,6 +2,7 @@
 // drinks = {beer: 3, whisky: 2, wine: 1}
 
 const DrinksValues = ({drinks}) => {
+
   return (
     <div>
         <ul>

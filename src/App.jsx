@@ -36,6 +36,10 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
 
   const drinksTotal = drinks.beer + drinks.whisky + drinks.wine
 
+  const handleReset = () => {
+    setDrinks({beer: 0, whisky: 0, wine: 0})
+  }
+
 
   const [isVisibleBar, setIsVisibleBar] = useState(false);
   const toglleBarViseble = () => {
@@ -59,7 +63,7 @@ localStorage.setItem('drinksValues', JSON.stringify(drinks))
       <button onClick={handleIncrementCounter}>increment {counter}</button>
       <button onClick={handleDecrementCounter}>decrement</button>
       <DrinksValues drinks={drinks} total={drinksTotal}  />
-      <DrinksCounter handleLogDrink={handleLogDrink} toglleBarViseble={toglleBarViseble} />
+      <DrinksCounter handleLogDrink={handleLogDrink} toglleBarViseble={toglleBarViseble}          handleReset={handleReset} drinksTotal={drinksTotal} />
       </>}
       
     </div>

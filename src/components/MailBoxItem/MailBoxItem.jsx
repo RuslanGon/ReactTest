@@ -10,4 +10,5 @@ const MailBoxItem = ({user, onDeleteUser}) => {
   )
 }
 
+
 export default MailBoxItem

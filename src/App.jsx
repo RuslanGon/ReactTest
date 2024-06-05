@@ -15,6 +15,7 @@ function App() {
 
   const [counter, setCounter] = useState(0)
   const [drinks, setDrinks] = useState({beer: 0, whisky: 0, wine: 0})
+  const [isVisibleBar, setIsVisibleBar] = useState(false)
 
   const handleIncrementCounter = () => {
     setCounter(counter + 1);
@@ -38,11 +39,14 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
       <MailBox boxtitle='Meest Express' mailBoxCount={5} users={MeestExpressUsers} />
       <MailBox boxtitle='Nova Poshta' mailBoxCount={3} users={NovaPoshta} />
       <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} users={UkrPoshta} />
-      
+
+      {isVisibleBar && <>
       <button onClick={handleIncrementCounter}>increment {counter}</button>
       <button onClick={handleDecrementCounter}>decrement</button>
       <DrinksValues drinks={drinks} drinksTotal={drinksTotal}  />
       <DrinksCounter handleLogDrink={handleLogDrink} />
+      </>}
+      
     </div>
   )
 }

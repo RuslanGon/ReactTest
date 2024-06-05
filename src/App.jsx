@@ -14,8 +14,17 @@ import MailBoxForm from './components/MailBoxForm/MailBoxForm'
 function App() {
 
   const initialDrinks = {beer: 0, whisky: 0, wine: 0}
+  
+  const [users, setUsers] = useState(() => {
+    const stringiUsers = localStorage.getItem('users')
+    if(!stringiUsers) return MeestExpressUsers
+    const parseUsers = JSON.parse(stringiUsers)
+    return parseUsers
+  })
 
-  const [users, setUsers] = useState(MeestExpressUsers)
+  useEffect(() => {
+    localStorage.setItem('users', JSON.stringify(users))
+  },[users])
 
 const onAddUser = (formData) => {
   const finalUser = {
@@ -72,7 +81,7 @@ localStorage.setItem('drinksValues', JSON.stringify(drinks))
     
     <div>
       <MailBox boxtitle='Meest Express' mailBoxCount={5} users={MeestExpressUsers} />
-      <MailBox boxtitle='Nova Poshta' mailBoxCount={3} users={NovaPoshta} />
+      <MailBox boxtitle='Nova Poshta' mailBoxCount={3} users={NovaPoshta}  />
       <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} users={UkrPoshta} />
 
       <button onClick={toglleBarViseble}>{isVisibleBar ? 'Hide' : 'Show'} mini-bar</button>

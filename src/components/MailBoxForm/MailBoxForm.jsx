@@ -1,18 +1,18 @@
 
-const MailBoxForm = () => {
+const MailBoxForm = ({onAddUser}) => {
 
 const handleSubmit = (event) => {
-    event.PreventDefault()
+    event.preventDefault()
     const userEmail = event.currentTarget.elements.userEmail.value
     const userName = event.currentTarget.elements.userName.value
-    console.log(userEmail, userName);
 
-    const finalUser = {
+    const formData = {
       userEmail,
       userName,
     };
-    
+    // console.log(formData);
 
+    onAddUser(formData)
 }
 
   return (
@@ -26,7 +26,7 @@ const handleSubmit = (event) => {
             </label>
             <br />
             <label>
-                <span>User name</span>
+            <span>User name</span>
             <br />
             <input type="text" name="userName" placeholder="enter your name" />
             </label>

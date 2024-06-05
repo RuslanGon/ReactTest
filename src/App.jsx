@@ -81,7 +81,7 @@ localStorage.setItem('drinksValues', JSON.stringify(drinks))
       <DrinksCounter handleLogDrink={handleLogDrink} toglleBarViseble={toglleBarViseble}          handleReset={handleReset} drinksTotal={drinksTotal} />
       </>}
       <br />
-      <MailBoxForm />
+      <MailBoxForm onAddUser={onAddUser} />
       <MailBox boxtitle='Meest Express' mailBoxCount={3} users={users} />
     </div>
   )

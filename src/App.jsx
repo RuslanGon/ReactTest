@@ -39,7 +39,7 @@ console.log(drinkName);
       <MailBox boxtitle='Nova Poshta' mailBoxCount={3} users={NovaPoshta} />
       <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} users={UkrPoshta} />
       
-      <button onClick={handleIncrementCounter}>Increment counter {counter}</button>
+      <button onClick={handleIncrementCounter}>increment {counter}</button>
       <button onClick={handleDecrementCounter}>decrement</button>
       <DrinksValues drinks={initialDrinks} />
       <DrinksCounter handleLogDrink={handleLogDrink} />

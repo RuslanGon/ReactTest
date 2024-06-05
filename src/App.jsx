@@ -22,7 +22,8 @@ const finalUser = {
   id: nanoid()
 }
 
-setUsers([...users, finalUser])
+// setUsers([...users, finalUser])
+setUsers((prevState) => [...prevState, finalUser])
 
   }
 

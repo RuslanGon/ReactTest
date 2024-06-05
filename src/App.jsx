@@ -17,16 +17,19 @@ function App() {
 
   const [users, setUsers] = useState(MeestExpressUsers)
 
-  const onAddUser = (formData) => {
-const finalUser = {
-  ...formData,
-  id: nanoid()
+const onAddUser = (formData) => {
+  const finalUser = {
+    ...formData,
+    id: nanoid(),
+  };
+
+  // setUsers([...users, finalUser])
+  setUsers((prevState) => [...prevState, finalUser]);
+};
+
+const onDeleteUser = (userId) => {
+setUsers(prevUsers => prevUsers.filter(user => user.id !==  userId))
 }
-
-// setUsers([...users, finalUser])
-setUsers((prevState) => [...prevState, finalUser])
-
-  }
 
   const [counter, setCounter] = useState(0)
   const [drinks, setDrinks] = useState(() => {

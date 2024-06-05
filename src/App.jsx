@@ -6,7 +6,7 @@ import NovaPoshta from '../nova.json'
 import UkrPoshta from '../Ukr.json'
 import DrinksCounter from './components/DrinksCounter/DrinksCounter'
 import DrinksValues from './components/DrinksValues/DrinksValues'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 function App() {
@@ -32,11 +32,15 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
 
   const drinksTotal = drinks.beer + drinks.whisky + drinks.wine
 
-  
+
   const [isVisibleBar, setIsVisibleBar] = useState(false);
   const toglleBarViseble = () => {
     setIsVisibleBar(!isVisibleBar);
   };
+
+  useEffect(() => {
+    console.log('Ura');
+  }, [drinksTotal])
 
   return (
     
@@ -46,11 +50,11 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
       <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} users={UkrPoshta} />
 
       <button onClick={toglleBarViseble}>{isVisibleBar ? 'Hide' : 'Show'}Show mini-bar</button>
-
+      <br />
       {isVisibleBar && <>
       <button onClick={handleIncrementCounter}>increment {counter}</button>
       <button onClick={handleDecrementCounter}>decrement</button>
-      <DrinksValues drinks={drinks} drinksTotal={drinksTotal}  />
+      <DrinksValues drinks={drinks} total={drinksTotal}  />
       <DrinksCounter handleLogDrink={handleLogDrink} />
       </>}
       

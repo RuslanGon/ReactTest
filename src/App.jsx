@@ -8,6 +8,7 @@ import DrinksCounter from './components/DrinksCounter/DrinksCounter'
 import DrinksValues from './components/DrinksValues/DrinksValues'
 import { useEffect, useState } from 'react'
 import { nanoid } from 'nanoid'
+import MailBoxForm from './components/MailBoxForm/MailBoxForm'
 
 
 function App() {
@@ -80,8 +81,8 @@ localStorage.setItem('drinksValues', JSON.stringify(drinks))
       <DrinksCounter handleLogDrink={handleLogDrink} toglleBarViseble={toglleBarViseble}          handleReset={handleReset} drinksTotal={drinksTotal} />
       </>}
       <br />
+      <MailBoxForm />
       <MailBox boxtitle='Meest Express' mailBoxCount={3} users={users} />
-      
     </div>
   )
 }

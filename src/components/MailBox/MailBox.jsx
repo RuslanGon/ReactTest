@@ -3,7 +3,7 @@ import css from '../MailBox/MailBox.module.css'
 import MailBoxList from '../MailBoxList/MailBoxList'
 
 
-const MailBox = ({boxtitle, mailBoxCount, users}) => {
+const MailBox = ({boxtitle, mailBoxCount, users, onDeleteUser}) => {
 
   const isMailBoxIsFull = mailBoxCount === 0
 
@@ -19,7 +19,7 @@ const MailBox = ({boxtitle, mailBoxCount, users}) => {
         ) : (
           <p>Количество активных ячеек: {mailBoxCount}</p>
         )}
-        <MailBoxList users={users} />
+        <MailBoxList users={users} onDeleteUser={onDeleteUser} />
       </div>
   );
 }

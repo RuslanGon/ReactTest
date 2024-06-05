@@ -85,7 +85,7 @@ localStorage.setItem('drinksValues', JSON.stringify(drinks))
       </>}
       <br />
       <MailBoxForm onAddUser={onAddUser} />
-      <MailBox boxtitle='Meest Express' mailBoxCount={3} users={users} />
+      <MailBox boxtitle='Meest Express' mailBoxCount={3} users={users} onDeleteUser={onDeleteUser} />
     </div>
   )
 }

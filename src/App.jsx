@@ -55,7 +55,7 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
       <button onClick={handleIncrementCounter}>increment {counter}</button>
       <button onClick={handleDecrementCounter}>decrement</button>
       <DrinksValues drinks={drinks} total={drinksTotal}  />
-      <DrinksCounter handleLogDrink={handleLogDrink} />
+      <DrinksCounter handleLogDrink={handleLogDrink} toglleBarViseble={toglleBarViseble} />
       </>}
       
     </div>

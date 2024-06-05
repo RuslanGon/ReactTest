@@ -1,13 +1,19 @@
 import { useEffect } from "react"
 
-const DrinksCounter = ({handleLogDrink}) => {
+const DrinksCounter = ({handleLogDrink, toglleBarViseble}) => {
 
   useEffect(() => {
-    console.log('hello');
+
+const onKeyDown = (event) => {
+if(event.code === 'Escape')
+  toglleBarViseble()
+}
+window.addEventListener('keydown', onKeyDown)
+
     return () => {
-      console.log('bay');
+      window.removeEventListener('keydown', onKeyDown)
     }
-  }, [])
+  }, [toglleBarViseble])
 
   return (
     <div>

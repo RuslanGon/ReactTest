@@ -19,6 +19,11 @@ function App() {
     setCounter(counter + 1);
   };
 
+  const handleDecrementCounter = () => {
+    if(counter === 0)return
+    setCounter(counter -1)
+  }
+
   const handleClick = () => {
     console.log('hello word');
   }
@@ -35,6 +40,7 @@ console.log(drinkName);
       <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} users={UkrPoshta} />
       
       <button onClick={handleIncrementCounter}>Increment counter {counter}</button>
+      <button onClick={handleDecrementCounter}>decrement</button>
       <DrinksValues drinks={initialDrinks} />
       <DrinksCounter handleLogDrink={handleLogDrink} />
     </div>

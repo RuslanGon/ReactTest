@@ -80,9 +80,9 @@ localStorage.setItem('drinksValues', JSON.stringify(drinks))
   return (
     
     <div>
-      <MailBox boxtitle='Meest Express' mailBoxCount={5} users={MeestExpressUsers} />
-      <MailBox boxtitle='Nova Poshta' mailBoxCount={3} users={NovaPoshta}  />
-      <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} users={UkrPoshta} />
+      {/* <MailBox boxtitle='Meest Express' mailBoxCount={5} users={MeestExpressUsers} /> */}
+      {/* <MailBox boxtitle='Nova Poshta' mailBoxCount={3} users={NovaPoshta}  /> */}
+      {/* <MailBox boxtitle='Ukr Poshta' mailBoxCount={0} users={UkrPoshta} /> */}
 
       <button onClick={toglleBarViseble}>{isVisibleBar ? 'Hide' : 'Show'} mini-bar</button>
       <br />
@@ -94,6 +94,10 @@ localStorage.setItem('drinksValues', JSON.stringify(drinks))
       </>}
       <br />
       <MailBoxForm onAddUser={onAddUser} />
+      <section>
+        <h2>Search by name or email</h2>
+        <input type="text" name=""  />
+      </section>
       <MailBox boxtitle='Meest Express' mailBoxCount={3} users={users} onDeleteUser={onDeleteUser} />
     </div>
   )

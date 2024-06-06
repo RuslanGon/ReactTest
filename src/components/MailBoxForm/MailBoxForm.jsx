@@ -1,5 +1,5 @@
 
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import * as Yup from 'yup';
 
@@ -37,12 +37,14 @@ const MailBoxForm = ({ onAddUser }) => {
               <span>User email</span>
               <br />
               <Field type="email" name="userEmail" placeholder="Enter your email" />
+              <ErrorMessage name='userEmail'  component='p'/>
             </label>
             <br />
             <label>
               <span>User name</span>
               <br />
               <Field type="text" name="userName" placeholder="Enter your name" />
+              <ErrorMessage name='userName'  component='p'/>
             </label>
             <br />
             <button type="submit">Add user</button>

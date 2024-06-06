@@ -1,42 +1,50 @@
+import { Field, Form, Formik } from "formik"
 
 const MailBoxForm = ({onAddUser}) => {
 
-const handleSubmit = (event) => {
-    event.preventDefault()
-    const userEmail = event.currentTarget.elements.userEmail.value
-    const userName = event.currentTarget.elements.userName.value
+// const handleSubmit = (event) => {
+//     event.preventDefault()
+//     const userEmail = event.currentTarget.elements.userEmail.value
+//     const userName = event.currentTarget.elements.userName.value
 
-    const formData = {
-      userEmail,
-      userName,
-    };
+//     const formData = {
+//       userEmail,
+//       userName,
+//     };
     // console.log(formData);
 
-    onAddUser(formData)
+    // onAddUser(formData)
     
-    event.currentTarget.reset()
+    // event.currentTarget.reset()
+// }
+
+const handleSubmit = () => {
+
+
 }
 
   return (
     <div>
-        <form onSubmit={handleSubmit}>
-            <h2>Add new email user</h2>
-            <label>
+      <Formik initialValues={{}} onSubmit={handleSubmit}>
+        <Form>
+          <h2>Add new email user</h2>
+          <label>
             <span>User email</span>
             <br />
-            <input type="email" name="userEmail" placeholder="enter your email" />
-            </label>
-            <br />
-            <label>
+            <Field type="email" name="userEmail" placeholder="enter your email" />
+          </label>
+          <br />
+          <label>
             <span>User name</span>
             <br />
-            <input type="text" name="userName" placeholder="enter your name" />
-            </label>
-            <br />
-            <button type="submit">Add user</button>
-        </form>
+            <Field type="text" name="userName" placeholder="enter your name" />
+          </label>
+          <br />
+          <button type="submit">Add user</button>
+        </Form>
+      </Formik>
     </div>
-  )
+  );
 }
 
 export default MailBoxForm

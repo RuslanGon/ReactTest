@@ -67,7 +67,6 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
     setDrinks({beer: 0, whisky: 0, wine: 0})
   }
 
-
   const [isVisibleBar, setIsVisibleBar] = useState(false);
   const toglleBarViseble = () => {
     setIsVisibleBar(!isVisibleBar);
@@ -90,7 +89,6 @@ localStorage.setItem('drinksValues', JSON.stringify(drinks))
  }, [drinks])
 
   return (
-    
     <div>
       {/* <MailBox boxtitle='Meest Express' mailBoxCount={5} users={MeestExpressUsers} /> */}
       {/* <MailBox boxtitle='Nova Poshta' mailBoxCount={3} users={NovaPoshta}  /> */}

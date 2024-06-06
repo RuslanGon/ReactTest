@@ -1,0 +1,10 @@
+.name {
+    display: flex;
+    align-items: center;
+}
+
+.color {
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+}

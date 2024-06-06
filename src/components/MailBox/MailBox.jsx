@@ -3,6 +3,7 @@ import css from '../MailBox/MailBox.module.css'
 import MailBoxList from '../MailBoxList/MailBoxList'
 
 
+
 const MailBox = ({boxtitle, mailBoxCount, users, onDeleteUser}) => {
 
   const isMailBoxIsFull = mailBoxCount === 0

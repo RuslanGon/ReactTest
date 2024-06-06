@@ -1,13 +1,12 @@
 
 import { Formik, Form, Field } from 'formik';
 
-import * as yup from 'yup';
+import * as Yup from 'yup';
 
-const mailBoxSchema = yup.object({
-  firstName: yup.string().defined(),
-  nickName: yup.string().default('').nullable(),
-  email: yup.string().nullable().email(),
-  birthDate: yup.date().nullable().min(new Date(1900, 0, 1)),
+const mailBoxSchema = Yup.object({
+  userName: Yup.string().defined(),
+  userEmail: Yup.string().default('').nullable(),
+
 });
 
 

@@ -5,7 +5,8 @@ import * as Yup from 'yup';
 
 const mailBoxSchema = Yup.object({
   userEmail: Yup.string().email('enter your email').required('enter your email'),
-  userName: Yup.string().required('enter your name')
+  userName: Yup.string().required('enter your name'),
+  favColor: Yup.string().required('enter your color').oneOf(["red", "green", "blue"])
 });
 
 
@@ -14,6 +15,7 @@ const mailBoxSchema = Yup.object({
 const initialValues = {
   userName: "",
   userEmail: "",
+  favColor: ""
 };
 
 

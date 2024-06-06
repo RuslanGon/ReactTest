@@ -4,9 +4,8 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 const mailBoxSchema = Yup.object({
-  userName: Yup.string().defined(),
-  userEmail: Yup.string().default('').nullable(),
-
+  userEmail: Yup.string().email('enter your email').required('enter your email'),
+  userName: Yup.string().required('enter your name')
 });
 
 

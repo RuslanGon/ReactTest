@@ -6,18 +6,14 @@ import * as Yup from 'yup';
 const mailBoxSchema = Yup.object({
   userEmail: Yup.string().email('enter your email').required('enter your email'),
   userName: Yup.string().required('enter your name'),
-  favColor: Yup.string().required('enter your color').oneOf(["red", "green", "blue"])
+  favColor: Yup.string().required('enter your color').oneOf(["red", "blue", "green"])
 });
-
-
-
 
 const initialValues = {
   userName: "",
   userEmail: "",
   favColor: ""
 };
-
 
 const MailBoxForm = ({ onAddUser }) => {
   const handleSubmit = (values, actions) => {
@@ -54,21 +50,16 @@ const MailBoxForm = ({ onAddUser }) => {
               <label>
                 <span>Red:</span>
                 <Field type="radio" name="favColor" value="red" />
-
               </label>
               <label>
                 <span>Blue:</span>
-                <Field type="radio" name="favColor" value="green" />
-
+                <Field type="radio" name="favColor" value="blue" />
               </label>
               <label>
                 <span>Green:</span>
-                <Field type="radio" name="favColor" value="blue" />
+                <Field type="radio" name="favColor" value="green" />
                 <ErrorMessage name='favColor'  component='p'/>
               </label>
-              
-              
-            
             <br />
             <button type="submit">Add user</button>
           </Form>

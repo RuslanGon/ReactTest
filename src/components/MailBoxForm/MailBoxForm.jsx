@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik"
 
 
-const initialValues = {
+const INITIAL_FORM = {
   userEmail: "",
   userName: "",
 };
@@ -25,13 +25,13 @@ const MailBoxForm = ({onAddUser}) => {
 // }
 
 const handleSubmit = (values, actions) => {
-  console.log(values);
+  onAddUser(values);
   actions.resetForm();
 };
 
   return (
     <div>
-      <Formik initialValues={{initialValues}} onSubmit={handleSubmit}>
+      <Formik initialValues={{INITIAL_FORM}} onSubmit={handleSubmit}>
         <Form>
           <h2>Add new email user</h2>
           <label>

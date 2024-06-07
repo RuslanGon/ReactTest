@@ -4,7 +4,7 @@ const MailBoxItem = ({user, onDeleteUser}) => {
   return (
     <>
     <p>email: {user.userEmail}</p>
-    <p className={css.name}>name: <div style={{
+    <p className={css.name}>name: <span style={{
       backgroundColor: user.favColor
     }} className={css.color}/> {user.userName}</p>
     <button type="button" onClick={() => onDeleteUser(user.id)}>delet user</button>

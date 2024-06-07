@@ -6,7 +6,7 @@ import MeestExpressUsers from '../meest.json'
 // import UkrPoshta from '../Ukr.json'
 import DrinksCounter from './components/DrinksCounter/DrinksCounter'
 import DrinksValues from './components/DrinksValues/DrinksValues'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { nanoid } from 'nanoid'
 import MailBoxForm from './components/MailBoxForm/MailBoxForm'
 
@@ -46,7 +46,7 @@ setUsers(prevUsers => prevUsers.filter(user => user.id !==  userId))
   const parseDrinks = JSON.parse(stringyDrinks) ?? initialDrinks
   return parseDrinks
   })
-  
+
 
   const handleIncrementCounter = () => {
     setCounter(counter + 1);
@@ -79,10 +79,16 @@ setDrinks({ ...drinks, [drinkName] : drinks[drinkName] + 1 })
 setFilter(event.target.value)
   }
 
-  const filterUsers = users.filter((user) =>
-    user.userName.toLowerCase().includes(filter.toLowerCase()) ||
-    user.userEmail.toLowerCase().includes(filter.toLowerCase())
-  );
+  // const filterUsers = users.filter((user) =>
+  //   user.userName.toLowerCase().includes(filter.toLowerCase()) ||
+  //   user.userEmail.toLowerCase().includes(filter.toLowerCase())
+  // );
+
+  const filterUsers = useMemo(() => 
+    users.filter((user) =>
+        user.userName.toLowerCase().includes(filter.toLowerCase()) ||
+        user.userEmail.toLowerCase().includes(filter.toLowerCase())
+    ), [filter, users]);
 
 
  useEffect(() => {

@@ -12,24 +12,29 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react"
+import Loader from "./components/Loader/Loader";
 
 
 const AppHTTPSearch = () => {
 
 const [products, setProducts] = useState(null)
+const [isLoader, setIsLoader] = useState(false)
 
 useEffect(() => {
-    async function fetchProducts() {
-        const {data} = await axios.get('https://dummyjson.com/products');
+  async function fetchProducts() {
+    setIsLoader(true)
+    const { data } = await axios.get("https://dummyjson.com/products");
     console.log(data);
-    setProducts(data.products)
-      }
-      fetchProducts();
-}, [])
+    setProducts(data.products);
+    setIsLoader(false);
+  }
+  fetchProducts();
+}, []);
 
   return (
     <div>
         <h1>Smart Ukraine Products</h1>
+        {isLoader && <Loader />}
         <ul>
            {Array.isArray(products) && products.map(product => {
             return ( <li key={product.id}>

@@ -10,8 +10,9 @@ const initialValues = {
 };
 
 const SearchForm = ({ onSetSearchQuery }) => {
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, actions) => {
     onSetSearchQuery(values.searchTerm);
+    actions.resetForm();
   };
 
   return (

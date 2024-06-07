@@ -12,6 +12,8 @@ const AppHTTPSearch = () => {
 const [products, setProducts] = useState(null)
 const [isLoader, setIsLoader] = useState(false)
 const [isError, setIsError] =useState(false)
+const [query, setQuery] = useState('')
+console.log(query);
 
 useEffect(() => {
   async function fetchProducts() {
@@ -29,10 +31,14 @@ useEffect(() => {
   fetchProducts();
 }, []);
 
+const onSetSearchQuery = (searchTerm) => {
+  setQuery(searchTerm)
+}
+
   return (
     <div>
         <h1>Smart Ukraine Products</h1>
-        <SearchForm />
+        <SearchForm onSetSearchQuery={onSetSearchQuery} />
         {isLoader && <Loader />}
         {isError && <Error />}
        <ProductList products={products}  />

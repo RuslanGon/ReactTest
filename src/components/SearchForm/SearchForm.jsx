@@ -9,9 +9,9 @@ const initialValues = {
   searchTerm: ""
 };
 
-const SearchForm = ({ onAddUser }) => {
+const SearchForm = ({ onSetSearchQuery }) => {
   const handleSubmit = (values) => {
-    onAddUser(values);
+    onSetSearchQuery(values);
   };
 
   return (
@@ -23,7 +23,7 @@ const SearchForm = ({ onAddUser }) => {
           <Form>
             <h2>Search products by name or brand</h2>
             <label>
-              <Field type="text" name="searchTerm" placeholder="Search..." />
+              <Field type="text" name="searchTerm" placeholder="query..." />
               <ErrorMessage name="searchTerm" component="p" />
             </label>
             <br />

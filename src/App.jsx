@@ -46,6 +46,7 @@ setUsers(prevUsers => prevUsers.filter(user => user.id !==  userId))
   const parseDrinks = JSON.parse(stringyDrinks) ?? initialDrinks
   return parseDrinks
   })
+  
 
   const handleIncrementCounter = () => {
     setCounter(counter + 1);

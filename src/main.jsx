@@ -1,12 +1,12 @@
 // import React from 'react'
 import ReactDOM from 'react-dom/client'
-// import App from './App.jsx'
+import App from './App.jsx'
 import './index.css'
-import AppHTTPSearch from './AppHTTPSearch.jsx'
+// import AppHTTPSearch from './AppHTTPSearch.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-  <AppHTTPSearch />
-    // <App />
+  // <AppHTTPSearch />
+    <App />
   // </React.StrictMode>,
 )

@@ -20,8 +20,9 @@ const [products, setProducts] = useState(null)
 
 useEffect(() => {
     async function fetchProducts() {
-        const response = await axios.get('https://dummyjson.com/products');
-    
+        const {data} = await axios.get('https://dummyjson.com/products');
+    console.log(data);
+    setProducts(data.products)
       }
       fetchProducts();
 }, [])
@@ -30,13 +31,17 @@ useEffect(() => {
     <div>
         <h1>Smart Ukraine cars</h1>
         <ul>
-            <li>
-                <img width={250} src="https://cdn.dummyjson.com/products/images/vehicle/Charger%20SXT%20RWD/thumbnail.png" alt="" />
-                <h3>Title:</h3>
-                <p>Price:</p>
-                <p>Brand:</p>
-                <p>Total:</p>
-            </li>
+           {Array.isArray(products) && products.map(product => {
+            return ( <li key={product.id}>
+                <img width={350} src={product.thumbnail} alt="" />
+                <h3>Title: {product.title}</h3>
+                <p>Price: {product.price}</p>
+                <p>Brand: {product.branb}</p>
+                <p>Total: {product.total}</p>
+            </li>)
+           }
+
+    )}
         </ul>
     </div>
   )

@@ -29,7 +29,7 @@ useEffect(() => {
 
   return (
     <div>
-        <h1>Smart Ukraine cars</h1>
+        <h1>Smart Ukraine Products</h1>
         <ul>
            {Array.isArray(products) && products.map(product => {
             return ( <li key={product.id}>

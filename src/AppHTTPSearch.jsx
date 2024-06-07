@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Loader from "./components/Loader/Loader";
 import Error from "./components/Error/Error";
 import { reguestProducts } from "./services/api";
+import ProductList from "./components/ProductList/ProductList";
 
 
 const AppHTTPSearch = () => {
@@ -32,21 +33,8 @@ useEffect(() => {
         <h1>Smart Ukraine Products</h1>
         {isLoader && <Loader />}
         {isError && <Error />}
-        <ul>
-           {Array.isArray(products) && products.map(product => {
-            return ( <li key={product.id}>
-                <img width={350} src={product.thumbnail} alt="" />
-                <h3>Title: {product.title}</h3>
-                <p>Price: {product.price}</p>
-                <p>Category: {product.category}</p>
-                <p>Rating: {product.rating}</p>
-            </li>)
-           }
-
-    )}
-        </ul>
+       <ProductList products={products}  />
     </div>
   )
 }
-
 export default AppHTTPSearch

@@ -36,8 +36,8 @@ useEffect(() => {
                 <img width={350} src={product.thumbnail} alt="" />
                 <h3>Title: {product.title}</h3>
                 <p>Price: {product.price}</p>
-                <p>Brand: {product.branb}</p>
-                <p>Total: {product.total}</p>
+                <p>Category: {product.category}</p>
+                <p>Rating: {product.rating}</p>
             </li>)
            }
 

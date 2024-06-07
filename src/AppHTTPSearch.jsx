@@ -1,19 +1,8 @@
 
-// {
-//     "id": 168,
-//     "title": "Charger SXT RWD",
-//     "price": 32999.99,
-//     "quantity": 3,
-//     "total": 98999.97,
-//     "discountPercentage": 13.39,
-//     "discountedTotal": 85743.87,
-//     "thumbnail": "https://cdn.dummyjson.com/products/images/vehicle/Charger%20SXT%20RWD/thumbnail.png"
-//   }
-
-import axios from "axios";
 import { useEffect, useState } from "react"
 import Loader from "./components/Loader/Loader";
 import Error from "./components/Error/Error";
+import { reguestProducts } from "./services/api";
 
 
 const AppHTTPSearch = () => {
@@ -26,7 +15,7 @@ useEffect(() => {
   async function fetchProducts() {
     try {
       setIsLoader(true);
-      const { data } = await axios.get("https://dummyjson.com/products");
+      const data = await reguestProducts();
       console.log(data);
       setProducts(data.products);
     } catch (error) {

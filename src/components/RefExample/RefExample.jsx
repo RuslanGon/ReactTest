@@ -1,16 +1,21 @@
-import { useRef} from "react";
+import { useEffect, useRef} from "react";
 
 const RefExample = () => {
-  const buttonRef = useRef(null);
+  const inputRef = useRef(null);
 
-  
-    console.log(buttonRef); 
-  
+const handleClick = () => {
+// inputRef.current.focus()
+}
+
+useEffect(()=>{
+  if(inputRef.current === null)return
+  inputRef.current.focus()
+}, [])
 
   return (
     <div>
-      <button ref={buttonRef}>Click to do</button>
-      <input type="text" placeholder="enter something" />
+      <button onClick={handleClick}>Click to do</button>
+      <input ref={inputRef} type="text" placeholder="enter something" />
     </div>
   );
 };

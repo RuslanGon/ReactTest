@@ -13,20 +13,27 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import Loader from "./components/Loader/Loader";
+import Error from "./components/Error/Error";
 
 
 const AppHTTPSearch = () => {
 
 const [products, setProducts] = useState(null)
 const [isLoader, setIsLoader] = useState(false)
+const [isError, setIsError] =useState(false)
 
 useEffect(() => {
   async function fetchProducts() {
-    setIsLoader(true)
-    const { data } = await axios.get("https://dummyjson.com/products");
-    console.log(data);
-    setProducts(data.products);
-    setIsLoader(false);
+    try {
+      setIsLoader(true);
+      const { data } = await axios.get("https://dummyjson.com/products");
+      console.log(data);
+      setProducts(data.products);
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setIsLoader(false);
+    }
   }
   fetchProducts();
 }, []);
@@ -35,6 +42,7 @@ useEffect(() => {
     <div>
         <h1>Smart Ukraine Products</h1>
         {isLoader && <Loader />}
+        {isError && <Error />}
         <ul>
            {Array.isArray(products) && products.map(product => {
             return ( <li key={product.id}>

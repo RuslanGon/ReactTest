@@ -4,6 +4,7 @@ import Loader from "./components/Loader/Loader";
 import Error from "./components/Error/Error";
 import { reguestProducts } from "./services/api";
 import ProductList from "./components/ProductList/ProductList";
+import SearchForm from "./components/SearchForm/SearchForm";
 
 
 const AppHTTPSearch = () => {
@@ -31,9 +32,11 @@ useEffect(() => {
   return (
     <div>
         <h1>Smart Ukraine Products</h1>
+        <SearchForm />
         {isLoader && <Loader />}
         {isError && <Error />}
        <ProductList products={products}  />
+      
     </div>
   )
 }

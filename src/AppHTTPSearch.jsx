@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import Loader from "./components/Loader/Loader";
 import Error from "./components/Error/Error";
-import { reguestProducts } from "./services/api";
+import { reguestProducts, reguestProductsByQuery } from "./services/api";
 import ProductList from "./components/ProductList/ProductList";
 import SearchForm from "./components/SearchForm/SearchForm";
 
@@ -13,7 +13,7 @@ const [products, setProducts] = useState(null)
 const [isLoader, setIsLoader] = useState(false)
 const [isError, setIsError] =useState(false)
 const [query, setQuery] = useState('')
-console.log(query);
+
 
 useEffect(() => {
   async function fetchProducts() {
@@ -30,6 +30,24 @@ useEffect(() => {
   }
   fetchProducts();
 }, []);
+
+useEffect(() => {
+if(query.length === 0)return
+async function fetchProductsByQuery() {
+  try {
+    setIsLoader(true);
+    const data = await reguestProductsByQuery(query);
+    console.log(data);
+    setProducts(data.products);
+  } catch (error) {
+    setIsError(true);
+  } finally {
+    setIsLoader(false);
+  }
+}
+fetchProductsByQuery();
+
+}, [query])
 
 const onSetSearchQuery = (searchTerm) => {
   setQuery(searchTerm)

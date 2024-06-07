@@ -11,7 +11,7 @@ const initialValues = {
 
 const SearchForm = ({ onSetSearchQuery }) => {
   const handleSubmit = (values) => {
-    onSetSearchQuery(values);
+    onSetSearchQuery(values.searchTerm);
   };
 
   return (

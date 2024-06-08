@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, Route, Routes, useParams } from "react-router-dom";
 import { reguestProductDetailsById } from "../services/api";
+import CommentsPage from "./CommentsPage";
 
 
 const ProductDetailsPage = () => {
@@ -34,6 +35,10 @@ const ProductDetailsPage = () => {
           <p>Brand: {productDetails.brand}</p>
         </div>
       )}
+      <Link to='comments'>Comment</Link>
+      <Routes>
+      <Route path="comments" element={<CommentsPage />} />
+      </Routes>
     </div>
   );
 };

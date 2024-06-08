@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { reguestProducts, reguestProductsByQuery } from "../services/api"
 
-export const useProductSearch = () => {
+export const useProductSearch = ({ isSearchPage = false}) => {
 
 const [products, setProducts] = useState(null)
 const [isLoader, setIsLoader] = useState(false)
@@ -11,6 +11,7 @@ const [query, setQuery] = useState('')
 
 useEffect(() => {
   async function fetchProducts() {
+    if(isSearchPage) return
     try {
       setIsLoader(true);
       const data = await reguestProducts();
@@ -23,7 +24,7 @@ useEffect(() => {
     }
   }
   fetchProducts();
-}, []);
+}, [isSearchPage]);
 
 useEffect(() => {
 if(query.length === 0)return

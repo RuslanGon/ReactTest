@@ -5,6 +5,7 @@ import MailBoxPage from "./pages/MailBoxPage";
 import ProductsPage from "./pages/ProductsPage";
 import SearchPage from "./pages/SearchPage";
 import HomePage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const getLinkStyle = ({ isActive }) =>
   clsx(css.navLink, {
@@ -36,6 +37,7 @@ const AppRouter = () => {
           <Route path="/mailbox" element={<MailBoxPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
     </div>

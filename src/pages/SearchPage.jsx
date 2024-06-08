@@ -6,7 +6,6 @@ import Error from "../components/Error/Error";
 import ProductList from "../components/ProductList/ProductList";
 import SearchForm from "../components/SearchForm/SearchForm";
 import { useProductSearch } from "../hooks/useProductSearch";
-import RefExample from "../components/RefExample/RefExample";
 
 
 const SearchPage = () => {
@@ -16,7 +15,6 @@ const SearchPage = () => {
   return (
     <div>
         <h1>Search product</h1>
-        <RefExample />
         <SearchForm onSetSearchQuery={onSetSearchQuery} />
         {isLoader && <Loader />}
         {isError && <Error />}

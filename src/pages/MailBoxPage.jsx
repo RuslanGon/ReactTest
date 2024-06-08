@@ -1,7 +1,7 @@
 
-import './App.css'
+import '../App.css'
 import MailBox from '../components/MailBox/MailBox'
-import MeestExpressUsers from '../meest.json'
+import MeestExpressUsers from '../../meest.json'
 // import NovaPoshta from '../nova.json'
 // import UkrPoshta from '../Ukr.json'
 import DrinksCounter from '../components/DrinksCounter/DrinksCounter'

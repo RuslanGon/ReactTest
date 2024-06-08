@@ -13,3 +13,9 @@ export const reguestProductsByQuery = async (query = '') => {
   const { data } = await instance.get(`/products/search?q=${query}`);
   return data;
 };
+
+
+export const reguestProductDetailsById = async (productId) => {
+  const { data } = await instance.get(`/products/${productId}`);
+  return data;
+};

@@ -7,7 +7,7 @@ const [timer, setTimer] = useState(0)
 
 useEffect(() => {
   const intevalId = setInterval(() => {
-setTimer(prevTimer => prevTimer + 1)
+setTimer(timer => timer + 1)
   },1000)
   return () => clearInterval(intevalId)
 }, [])

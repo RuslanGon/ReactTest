@@ -1,12 +1,26 @@
 import { NavLink, Route, Routes } from "react-router-dom";
 import css from "./AppRouter.module.css";
 import clsx from "clsx";
-import MailBoxPage from "./pages/MailBoxPage";
-import ProductsPage from "./pages/ProductsPage";
-import SearchPage from "./pages/SearchPage";
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
-import ProductDetailsPage from "./pages/ProductDetailsPage";
+import { Suspense, lazy } from "react";
+import Loader from "./components/Loader/Loader";
+// import MailBoxPage from "./pages/MailBoxPage";
+// import ProductsPage from "./pages/ProductsPage";
+// import SearchPage from "./pages/SearchPage";
+// import HomePage from "./pages/HomePage";
+// import NotFoundPage from "./pages/NotFoundPage";
+// import ProductDetailsPage from "./pages/ProductDetailsPage";
+
+const MailBoxPage = lazy(() => import('./pages/MailBoxPage'))
+const ProductsPage = lazy(() => import('./pages/ProductsPage'))
+const SearchPage = lazy(() => import("./pages/SearchPage"))
+const HomePage = lazy(() => import('./pages/HomePage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+const ProductDetailsPage = lazy(() => import('./pages/ProductDetailsPage'))
+
+
+
+
+
 
 const getLinkStyle = ({ isActive }) =>
   clsx(css.navLink, {
@@ -25,6 +39,7 @@ const AppRouter = () => {
         </nav>
       </header>
       <main>
+        <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/mailbox" element={<MailBoxPage />} />
@@ -33,6 +48,7 @@ const AppRouter = () => {
           <Route path="/search" element={<SearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        </Suspense>
       </main>
     </div>
   );

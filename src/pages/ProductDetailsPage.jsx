@@ -5,13 +5,12 @@ import CommentsPage from "./CommentsPage";
 import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";
 
-
 const ProductDetailsPage = () => {
   const { productId } = useParams();
 
   const [productDetails, setProductDetails] = useState(null);
-  const [isLoader, setIsLoader] = useState(false)
-const [isError, setIsError] =useState(false)
+  const [isLoader, setIsLoader] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     async function fetchProductDetails() {
@@ -21,11 +20,10 @@ const [isError, setIsError] =useState(false)
         setProductDetails(data);
       } catch (error) {
         setIsError(true);
-      }finally{
+      } finally {
         setIsLoader(false);
       }
     }
-
 
     if (productId) {
       fetchProductDetails();
@@ -36,23 +34,25 @@ const [isError, setIsError] =useState(false)
     <div>
       <h1>Product Details: {productId}</h1>
       {isLoader && <Loader />}
-        {isError && <Error />}
+      {isError && <Error />}
       {productDetails && (
         <div>
-          <img width={350} src={productDetails.thumbnail} alt={productDetails.title} />
+          <img
+            width={350}
+            src={productDetails.thumbnail}
+            alt={productDetails.title}
+          />
           <h2>Title: {productDetails.title}</h2>
           <p>Price: {productDetails.price}</p>
           <p>Brand: {productDetails.brand}</p>
         </div>
       )}
-      <Link to='comments'>Comment</Link>
+      <Link to="comments">Comment</Link>
       <Routes>
-      <Route path="comments" element={<CommentsPage />} />
+        <Route path="comments" element={<CommentsPage />} />
       </Routes>
     </div>
   );
 };
-
-
 
 export default ProductDetailsPage;

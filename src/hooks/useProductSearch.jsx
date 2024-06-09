@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react"
 import { reguestProducts, reguestProductsByQuery } from "../services/api"
+import { useSearchParams } from "react-router-dom"
 
 export const useProductSearch = ({ isSearchPage = false}) => {
 
 const [products, setProducts] = useState(null)
 const [isLoader, setIsLoader] = useState(false)
 const [isError, setIsError] =useState(false)
-const [query, setQuery] = useState('')
+// const [query, setQuery] = useState('')
+
+const [searchParams, setSearchParams] = useSearchParams()
+const query = searchParams.get('query')
 
 
 useEffect(() => {
@@ -27,12 +31,11 @@ useEffect(() => {
 }, [isSearchPage]);
 
 useEffect(() => {
-if(query.length === 0)return
+if(query === null)return
 async function fetchProductsByQuery() {
   try {
     setIsLoader(true);
     const data = await reguestProductsByQuery(query);
-    console.log(data);
     setProducts(data.products);
   } catch (error) {
     setIsError(true);
@@ -45,7 +48,8 @@ fetchProductsByQuery();
 }, [query])
 
 const onSetSearchQuery = (searchTerm) => {
-  setQuery(searchTerm)
+  // setQuery(searchTerm)
+  setSearchParams({query: searchTerm})
 }
 
   return {products, isLoader, isError, onSetSearchQuery}

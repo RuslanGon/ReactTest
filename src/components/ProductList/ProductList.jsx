@@ -16,7 +16,7 @@ const ProductList = ({products}) => {
                 <p>Price: {product.price}</p>
                 <p>Category: {product.category}</p>
                 <p>Rating: {product.rating}</p>
-                <Link to={`/products/${product.id}`}>See the details</Link>
+                <Link state={location} to={`/products/${product.id}`}>See the details</Link>
             </li>)
            }
     )}

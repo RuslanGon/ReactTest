@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Link, Route, Routes, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { reguestProductDetailsById } from "../services/api";
 import CommentsPage from "./CommentsPage";
 import Loader from "../components/Loader/Loader";
@@ -11,6 +11,8 @@ const ProductDetailsPage = () => {
   const [productDetails, setProductDetails] = useState(null);
   const [isLoader, setIsLoader] = useState(false);
   const [isError, setIsError] = useState(false);
+  const location = useLocation()
+  const backLinkRef = useRef(location.state ?? '/')
 
   useEffect(() => {
     async function fetchProductDetails() {
@@ -33,6 +35,7 @@ const ProductDetailsPage = () => {
   return (
     <div>
       <h1>Product Details: {productId}</h1>
+      <Link to={backLinkRef.current}>Go back</Link>
       {isLoader && <Loader />}
       {isError && <Error />}
       {productDetails && (

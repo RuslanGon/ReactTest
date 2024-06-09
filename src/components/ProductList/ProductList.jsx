@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 
 const ProductList = ({products}) => {
+
+  const location = useLocation()
+
   return (
     <ul>
+      {location.pathname === '/search' && <h2>Search result</h2>}
+      {location.pathname === '/products' && <h2>Products</h2>}
            {Array.isArray(products) && products.map(product => {
             return ( <li key={product.id}>
                 <img width={350} src={product.thumbnail} alt="" />
@@ -14,7 +19,6 @@ const ProductList = ({products}) => {
                 <Link to={`/products/${product.id}`}>See the details</Link>
             </li>)
            }
-
     )}
         </ul>
   )

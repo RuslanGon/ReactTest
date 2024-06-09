@@ -31,7 +31,8 @@ useEffect(() => {
 }, [isSearchPage]);
 
 useEffect(() => {
-if(query === null)return
+// if(query === null)return
+if(!query) return
 async function fetchProductsByQuery() {
   try {
     setIsLoader(true);

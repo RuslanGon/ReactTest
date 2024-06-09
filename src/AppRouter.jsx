@@ -3,6 +3,7 @@ import css from "./AppRouter.module.css";
 import clsx from "clsx";
 import { Suspense, lazy } from "react";
 import Loader from "./components/Loader/Loader";
+
 // import MailBoxPage from "./pages/MailBoxPage";
 // import ProductsPage from "./pages/ProductsPage";
 // import SearchPage from "./pages/SearchPage";

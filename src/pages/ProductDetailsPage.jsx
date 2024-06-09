@@ -1,7 +1,6 @@
 import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Link, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { reguestProductDetailsById } from "../services/api";
-// import CommentsPage from "./CommentsPage";
 const CommentsPage = lazy(() => import("./CommentsPage"))
 import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";

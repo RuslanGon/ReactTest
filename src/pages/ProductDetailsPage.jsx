@@ -26,6 +26,7 @@ const [isError, setIsError] =useState(false)
       }
     }
 
+
     if (productId) {
       fetchProductDetails();
     }
@@ -51,5 +52,7 @@ const [isError, setIsError] =useState(false)
     </div>
   );
 };
+
+
 
 export default ProductDetailsPage;

@@ -16,7 +16,6 @@ const SearchPage = () => {
         {isLoader && <Loader />}
         {isError && <Error />}
        <ProductList products={products}  />
-      
     </div>
   )
 }

@@ -5,14 +5,19 @@ import MeestExpressUsers from '../../meest.json'
 import { useEffect, useMemo, useState } from 'react'
 import { nanoid } from 'nanoid'
 import MailBoxForm from '../components/MailBoxForm/MailBoxForm'
+import { useSelector } from 'react-redux'
 
 function MailBoxPage() {
-  const [users, setUsers] = useState(() => {
-    const stringiUsers = localStorage.getItem('users')
-    if(!stringiUsers) return MeestExpressUsers
-    const parseUsers = JSON.parse(stringiUsers)
-    return parseUsers
-  })
+  // const [users, setUsers] = useState(() => {
+  //   const stringiUsers = localStorage.getItem('users')
+  //   if(!stringiUsers) return MeestExpressUsers
+  //   const parseUsers = JSON.parse(stringiUsers)
+  //   return parseUsers
+  // })
+
+  const users = useSelector(state => state.mailbox.users)
+  const filter = useSelector(state => state.mailbox.filter)
+
 
   useEffect(() => {
     localStorage.setItem('users', JSON.stringify(users))
@@ -31,7 +36,7 @@ const onAddUser = (formData) => {
 const onDeleteUser = (userId) => {
 setUsers(prevUsers => prevUsers.filter(user => user.id !==  userId))
 }
-  const [filter, setFilter] = useState('')
+  // const [filter, setFilter] = useState('')
 
   const onChangeFilter = (event) => {
 setFilter(event.target.value)

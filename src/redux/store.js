@@ -1,9 +1,10 @@
 
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import mailboxReducer from './mailbox/mailboxReducer';  
+import mailboxReduser from './mailbox/mailboxReduser';
+
 
 const rootReducer = combineReducers({
-  mailbox: mailboxReducer
+  mailbox: mailboxReduser
 });
 
 export const store = configureStore({

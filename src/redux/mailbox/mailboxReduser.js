@@ -4,7 +4,7 @@ const INITIAL_STATE = {
     filter: ""
   };
   
-  export const mailboxReducer = (state = INITIAL_STATE, action) => {
+  export const mailboxReduser = (state = INITIAL_STATE, action) => {
     switch (action.type) {
       case 'mailbox/ADD_USER': {
         return {
@@ -29,5 +29,5 @@ const INITIAL_STATE = {
     }
   };
   
-  export default mailboxReducer;
+  export default mailboxReduser;
   

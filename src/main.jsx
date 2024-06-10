@@ -4,7 +4,7 @@ import './index.css'
 import AppRouter from './AppRouter.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'  
-import { store } from './redus/store.js'
+import { store } from './redux/store.js'
 
 // import App from './App.jsx'
 // import AppHTTPSearch from './AppHTTPSearch.jsx'

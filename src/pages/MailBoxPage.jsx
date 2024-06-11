@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import MailBoxForm from '../components/MailBoxForm/MailBoxForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser, deleteUser, setFilter } from '../redux/mailbox/mailboxReduser';
+import { addUser, deleteUser } from '../redux/mailbox/mailboxReduser';
 
 function MailBoxPage() {
   const dispatch = useDispatch();

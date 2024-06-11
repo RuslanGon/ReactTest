@@ -13,10 +13,6 @@ const ProductDetailsPage = () => {
   const productDetails = useSelector(state => state.productDetails.productDetails)
   const isLoader = useSelector(state =>state.productDetails.isLoader)
   const isError = useSelector(state =>state.productDetails.isError)
-
-  // const [productDetails, setProductDetails] = useState(null);
-  // const [isLoader, setIsLoader] = useState(false);
-  // const [isError, setIsError] = useState(false); 
   const location = useLocation()
   const backLinkRef = useRef(location.state ?? '/')
 
@@ -61,6 +57,7 @@ const ProductDetailsPage = () => {
         </div>
       )}
       <Link to="comments">Comment</Link>
+
       <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="comments" element={<CommentsPage />} />

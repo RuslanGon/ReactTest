@@ -13,7 +13,7 @@ const productDetailsSlice = createSlice({
   extraReducers: (builder) =>
     builder.addCase(apiReguestProductDetailsById.pending, (state) => {
       state.isLoader = true;
-      state.isError = null;
+      state.isError = false;
     })
     .addCase(apiReguestProductDetailsById.fulfilled, (state, action) => {
       state.isLoader = false;

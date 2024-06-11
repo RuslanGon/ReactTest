@@ -21,12 +21,8 @@ const query = searchParams.get('query')
 
 useEffect(() => {
   if(isSearchPage) return
-
   dispatch(apiGetProducts())
 }, [dispatch, isSearchPage]);
-
-
-
 
 
 useEffect(() => {

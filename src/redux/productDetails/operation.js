@@ -5,7 +5,7 @@ export const apiReguestProductDetailsById = createAsyncThunk(
   "productDetails/get",
   async (productId, thunkApi) => {
     try {
-      const data = await reguestProductDetailsById.get(productId);
+      const data = await reguestProductDetailsById(productId);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

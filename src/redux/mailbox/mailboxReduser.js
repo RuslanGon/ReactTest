@@ -28,9 +28,6 @@ export  const {addUser, deleteUser, setFilter  } = mailboxSlice.actions;
 
 export  const mailboxReducer = mailboxSlice.reducer;
 
-
-
-  
   // export const mailboxReduser = (state = INITIAL_STATE, action) => {
   //   switch (action.type) {
   //     case 'mailbox/ADD_USER': {

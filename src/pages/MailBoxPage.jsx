@@ -1,6 +1,5 @@
 import '../App.css';
 import MailBox from '../components/MailBox/MailBox';
-// import MeestExpressUsers from '../../meest.json';
 import { useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import MailBoxForm from '../components/MailBoxForm/MailBoxForm';

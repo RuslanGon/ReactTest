@@ -4,13 +4,14 @@ import { useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import MailBoxForm from '../components/MailBoxForm/MailBoxForm';
 import { useDispatch, useSelector } from 'react-redux';
+import { addUser, deleteUser } from '../redux/mailbox/mailboxReduser';
 
 function MailBoxPage() {
   const dispatch = useDispatch();
   const users = useSelector(state => state.mailbox.users);
   const filter = useSelector(state => state.mailbox.filter);
   
-  // Add state for filter
+
   const [localFilter, setLocalFilter] = useState(filter);
 
   useEffect(() => {
@@ -23,20 +24,15 @@ function MailBoxPage() {
       id: nanoid(),
     };
 
-    const action = { type: 'mailbox/ADD_USER', payload: finalUser };
-    dispatch(action);
+    dispatch(addUser(finalUser));
   };
 
   const onDeleteUser = (userId) => {
-    const action = { type: 'mailbox/DELETE_USER', payload: userId };
-    dispatch(action);
+    dispatch(deleteUser(userId));
   };
 
   const onChangeFilter = (event) => {
-    const newFilter = event.target.value;
-    setLocalFilter(newFilter);
-    const action = { type: 'mailbox/SET_FILTER', payload: newFilter };
-    dispatch(action);
+    dispatch(setLocalFilter(event.target.value));
   };
 
   const filterUsers = useMemo(

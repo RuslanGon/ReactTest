@@ -4,7 +4,8 @@ import './index.css'
 import AppRouter from './AppRouter.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'  
-import { store } from './redux/store.js'
+import { persistor, store } from './redux/store.js'
+import { PersistGate } from 'redux-persist/integration/react'
 
 // import App from './App.jsx'
 // import AppHTTPSearch from './AppHTTPSearch.jsx'
@@ -12,11 +13,13 @@ import { store } from './redux/store.js'
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
   <Provider store={store}>
+    <PersistGate persistor={persistor}>
     <BrowserRouter>
       {/* <AppHTTPSearch /> */}
       {/* <App /> */}
       <AppRouter />
     </BrowserRouter>
+    </PersistGate>
   </Provider>
   // </React.StrictMode>
 )

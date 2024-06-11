@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react"
-import { reguestProducts, reguestProductsByQuery } from "../services/api"
+import { reguestProductsByQuery } from "../services/api"
 import { useSearchParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { apiGetProducts } from "../redux/productDetails/operation"
 
 export const useProductSearch = ({ isSearchPage = false}) => {
 
-const [products, setProducts] = useState(null)
+  const dispatch = useDispatch()
+  const products = useSelector(state => state.productDetails.products)
+ 
+
+// const [products, setProducts] = useState(null)
 const [isLoader, setIsLoader] = useState(false)
 const [isError, setIsError] =useState(false)
 // const [query, setQuery] = useState('')
@@ -14,21 +20,8 @@ const query = searchParams.get('query')
 
 
 useEffect(() => {
-  async function fetchProducts() {
-    if(isSearchPage) return
-    try {
-      setIsLoader(true);
-      const data = await reguestProducts();
-      console.log(data);
-      setProducts(data.products);
-    } catch (error) {
-      setIsError(true);
-    } finally {
-      setIsLoader(false);
-    }
-  }
-  fetchProducts();
-}, [isSearchPage]);
+  dispatch(apiGetProducts())
+}, [dispatch]);
 
 useEffect(() => {
 // if(query === null)return
@@ -37,7 +30,7 @@ async function fetchProductsByQuery() {
   try {
     setIsLoader(true);
     const data = await reguestProductsByQuery(query);
-    setProducts(data.products);
+    // setProducts(data.products);
   } catch (error) {
     setIsError(true);
   } finally {

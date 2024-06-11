@@ -11,18 +11,19 @@ const productDetailsSlice = createSlice({
   name: "productDetails",
   initialState: INITIAL_STATE,
   extraReducers: (builder) =>
-    builder.addCase(apiReguestProductDetailsById.pending, (state) => {
-      state.isLoader = true;
-      state.isError = false;
-    })
-    .addCase(apiReguestProductDetailsById.fulfilled, (state, action) => {
-      state.isLoader = false;
-      state.productDetails = action.payload
-    })
-    .addCase(apiReguestProductDetailsById.rejected, (state) => {
-      state.isLoader = false;
-      state.isError = true;
-    })
+    builder
+      .addCase(apiReguestProductDetailsById.pending, (state) => {
+        state.isLoader = true;
+        state.isError = false;
+      })
+      .addCase(apiReguestProductDetailsById.fulfilled, (state, action) => {
+        state.isLoader = false;
+        state.productDetails = action.payload;
+      })
+      .addCase(apiReguestProductDetailsById.rejected, (state) => {
+        state.isLoader = false;
+        state.isError = true;
+      }),
 });
 
 export  const productDetailsReducer = productDetailsSlice.reducer;

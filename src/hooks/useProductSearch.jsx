@@ -20,9 +20,14 @@ const query = searchParams.get('query')
 
 
 useEffect(() => {
+  if(isSearchPage) return
 
   dispatch(apiGetProducts())
-}, [dispatch]);
+}, [dispatch, isSearchPage]);
+
+
+
+
 
 useEffect(() => {
 // if(query === null)return

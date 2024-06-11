@@ -15,7 +15,7 @@ import {
 const mailboxPersistConfig = {
   key: 'mailbox',
   storage,
-  whitelist: ['users'], // исправлено на whitelist с маленькой буквы
+  whitelist: ['users'], 
 };
 
 const persistedMailboxReducer = persistReducer(mailboxPersistConfig, mailboxReducer);

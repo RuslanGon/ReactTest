@@ -6,6 +6,7 @@ import Loader from "./components/Loader/Loader";
 import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import ContactsPage from "./pages/ContactsPage";
+import Layout from "./components/Layout/Layout";
 
 // import MailBoxPage from "./pages/MailBoxPage";
 // import ProductsPage from "./pages/ProductsPage";
@@ -21,26 +22,12 @@ const HomePage = lazy(() => import('./pages/HomePage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 const ProductDetailsPage = lazy(() => import('./pages/ProductDetailsPage'))
 
-const getLinkStyle = ({ isActive }) =>
-  clsx(css.navLink, {
-    [css.active]: isActive,
-  });
 
-const AppRouter = () => {
+
+const AppRegistor = () => {
   return (
     <div>
-      <header>
-        <nav className={css.nav}>
-          <NavLink className={getLinkStyle} to="/"> HomePage</NavLink>
-          <NavLink className={getLinkStyle} to="/register">Registration</NavLink>
-          <NavLink className={getLinkStyle} to="/login">Login</NavLink>
-          <NavLink className={getLinkStyle} to="/contacts">Contacts</NavLink>
-          <NavLink className={getLinkStyle} to="/mailbox"> MailBox</NavLink>
-          <NavLink className={getLinkStyle} to="/products">Products</NavLink>
-          <NavLink className={getLinkStyle} to="/search">Search</NavLink>
-        </nav>
-      </header>
-      <main>
+    <Layout>
         <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -54,9 +41,9 @@ const AppRouter = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         </Suspense>
-      </main>
+      </Layout>
     </div>
   );
 };
 
-export default AppRouter;
+export default AppRegistor;

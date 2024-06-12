@@ -1,11 +1,12 @@
 // import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import AppRouter from './AppRouter.jsx'
+// import AppRouter from './AppRouter.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'  
 import { persistor, store } from './redux/store.js'
 import { PersistGate } from 'redux-persist/integration/react'
+import AppRegistor from './AppRegistor.jsx'
 
 // import App from './App.jsx'
 // import AppHTTPSearch from './AppHTTPSearch.jsx'
@@ -17,7 +18,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       {/* <AppHTTPSearch /> */}
       {/* <App /> */}
-      <AppRouter />
+      {/* <AppRouter /> */}
+      <AppRegistor />
     </BrowserRouter>
     </PersistGate>
   </Provider>

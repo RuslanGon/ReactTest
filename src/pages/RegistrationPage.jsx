@@ -64,7 +64,7 @@ const RegistrationPage = () => {
               <ErrorMessage name="password" component="p" />
             </label>
             <br />
-            <button type="submit">Add user</button>
+            <button type="submit">Registor</button>
           </Form>
         )}
       </Formik>

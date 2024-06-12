@@ -5,11 +5,12 @@ import { nanoid } from 'nanoid';
 import MailBoxForm from '../components/MailBoxForm/MailBoxForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, deleteUser } from '../redux/mailbox/mailboxReduser';
+import { selectFilter, selectUsers } from '../redux/mailbox/selector';
 
 function MailBoxPage() {
   const dispatch = useDispatch();
-  const users = useSelector(state => state.mailbox.users);
-  const filter = useSelector(state => state.mailbox.filter);
+  const users = useSelector(selectUsers);
+  const filter = useSelector(selectFilter);
   
 
   const [localFilter, setLocalFilter] = useState(filter);

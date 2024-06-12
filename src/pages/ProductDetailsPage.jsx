@@ -6,13 +6,15 @@ import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";
 import { useDispatch, useSelector } from "react-redux";
 import { apiReguestProductDetailsById } from "../redux/productDetails/operation";
+import { selectProductDetails, selectProductDetailsIsError, selectProductDetailsIsLoading } from "../redux/productDetails/selectors";
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
   const dispatch = useDispatch()
-  const productDetails = useSelector(state => state.productDetails.productDetails)
-  const isLoader = useSelector(state =>state.productDetails.isLoader)
-  const isError = useSelector(state =>state.productDetails.isError)
+  const productDetails = useSelector(selectProductDetails)
+  const isLoader = useSelector(selectProductDetailsIsLoading)
+  const isError = useSelector(selectProductDetailsIsError)
+  
   const location = useLocation()
   const backLinkRef = useRef(location.state ?? '/')
 

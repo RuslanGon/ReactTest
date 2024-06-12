@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
 
 import * as Yup from "yup";
+import { apiRegistor } from "../redux/auth/authSlice";
 
 const registorSchema = Yup.object({
     email: Yup.string().email("enter your email").required("enter your email"),
@@ -15,11 +17,15 @@ const initialValues = {
 };
 
 const RegistrationPage = () => {
+    
+    const dispatch = useDispatch()
+
   const handleSubmit = (values, actions) => {
-    console.log(values);
-    // onAddUser(values);
+    dispatch(apiRegistor(values))
     actions.resetForm();
   };
+
+  
 
   return (
     <div>

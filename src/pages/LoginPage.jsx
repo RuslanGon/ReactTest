@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
 
 import * as Yup from "yup";
+import { apiLogin } from "../redux/auth/authSlice";
 
 const loginSchema = Yup.object({
     email: Yup.string().email("enter your email").required("enter your email"),
@@ -13,9 +15,10 @@ const initialValues = {
 };
 
 const LoginPage = () => {
+const dispatch = useDispatch()
+
   const handleSubmit = (values, actions) => {
-    console.log(values);
-    // onAddUser(values);
+    dispatch(apiLogin(values))
     actions.resetForm();
   };
 

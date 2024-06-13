@@ -57,6 +57,20 @@ export const apiRefrashUser = createAsyncThunk(
   }
 ); 
 
+
+export const apiLogOut = createAsyncThunk(
+  "auth/logout",
+  async (_, thunkApi) => {
+    try {
+      await instance.post("/users/logout");
+      clearToken()
+      return
+    } catch (e) {
+      return thunkApi.rejectWithValue(e.message);
+    }
+  }
+); 
+
 const INITIAL_STATE = {
    isSignedIn: false,
    userData: null,
@@ -112,6 +126,18 @@ const authSlice = createSlice({
         state.userData = action.payload;
       })
       .addCase(apiRefrashUser.rejected, state => {
+        (state.isLoading = false), 
+        (state.isError = true);
+      })
+
+      .addCase(apiLogOut.pending, (state) => {
+        (state.isLoading = true), 
+        (state.isError = false);
+      })
+      .addCase(apiLogOut.fulfilled, () => {
+        return INITIAL_STATE
+      })
+      .addCase(apiLogOut.rejected, state => {
         (state.isLoading = false), 
         (state.isError = true);
       })

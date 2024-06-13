@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import css from "../../AppRouter.module.css";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectIsSignedIn } from "../../redux/auth/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsSignedIn, selectUserData } from "../../redux/auth/selectors";
+import { apiLogOut } from "../../redux/auth/authSlice";
 
 const getLinkStyle = ({ isActive }) =>
   clsx(css.navLink, {
@@ -10,7 +11,13 @@ const getLinkStyle = ({ isActive }) =>
   });
 
 const Layout = ({ children }) => {
+  const dispatch = useDispatch
   const isSignedIn = useSelector(selectIsSignedIn);
+  const userData = useSelector(selectUserData)
+
+  const onLogOut = () => {
+dispatch(apiLogOut())
+  }
 
   return (
     <div>
@@ -36,6 +43,10 @@ const Layout = ({ children }) => {
               <NavLink className={getLinkStyle} to="/search">
                 Search
               </NavLink>
+              <div>
+                <span>Hello {userData.name}</span>
+                <button onClick={onLogOut} type="button">LogOut</button>
+              </div>
             </>
           ) : (
             <>

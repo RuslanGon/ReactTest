@@ -40,6 +40,23 @@ export const apiLogin = createAsyncThunk(
   }
 ); 
 
+export const apiRefrashUser = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkApi) => {
+    try {
+      const state = thunkApi.getState
+      const token = state.auth.token
+      setToken(token);
+
+      const { data } = await instance.get("/users/current");
+      console.log(data);
+      return data;
+    } catch (e) {
+      return thunkApi.rejectWithValue(e.message);
+    }
+  }
+); 
+
 const INITIAL_STATE = {
    isSignedIn: false,
    userData: null,
@@ -80,6 +97,21 @@ const authSlice = createSlice({
         state.token = action.payload.token
       })
       .addCase(apiLogin.rejected, state => {
+        (state.isLoading = false), 
+        (state.isError = true);
+      })
+
+
+      .addCase(apiRefrashUser.pending, (state) => {
+        (state.isLoading = true), 
+        (state.isError = false);
+      })
+      .addCase(apiRefrashUser.fulfilled, (state, action) => {
+        (state.isLoading = false), 
+        (state.isSignedIn = true);
+        state.userData = action.payload;
+      })
+      .addCase(apiRefrashUser.rejected, state => {
         (state.isLoading = false), 
         (state.isError = true);
       })

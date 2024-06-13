@@ -6,6 +6,8 @@ import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import ContactsPage from "./pages/ContactsPage";
 import Layout from "./components/Layout/Layout";
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 const MailBoxPage = lazy(() => import('./pages/MailBoxPage'))
 const ProductsPage = lazy(() => import('./pages/ProductsPage'))
@@ -21,13 +23,13 @@ const AppRegistor = () => {
         <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="/mailbox" element={<MailBoxPage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:productId/*" element={<ProductDetailsPage />}/> 
-          <Route path="/search" element={<SearchPage />} />
+          <Route path="/register" element={<RestrictedRoute><RegistrationPage /></RestrictedRoute>} />
+          <Route path="/login" element={<RestrictedRoute> <LoginPage /> </RestrictedRoute>} />
+          <Route path="/contacts" element={<PrivateRoute><ContactsPage /></PrivateRoute>} />
+          <Route path="/mailbox" element={<PrivateRoute><MailBoxPage /></PrivateRoute>} />
+          <Route path="/products" element={<PrivateRoute><ProductsPage /></PrivateRoute>} />
+          <Route path="/products/:productId/*" element={<PrivateRoute><ProductDetailsPage /> </    PrivateRoute>}/> 
+          <Route path="/search" element={<PrivateRoute><SearchPage /></PrivateRoute>} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         </Suspense>

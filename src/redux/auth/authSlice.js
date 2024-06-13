@@ -32,8 +32,8 @@ export const apiLogin = createAsyncThunk(
     try {
       const { data } = await instance.post("/users/login", formData);
       console.log(data);
-      // setToken(data.token);
-      // return data;
+      setToken(data.token);
+      return data;
     } catch (e) {
       return thunkApi.rejectWithValue(e.message);
     }
@@ -64,6 +64,22 @@ const authSlice = createSlice({
         state.token = action.payload.token
       })
       .addCase(apiRegistor.rejected, state => {
+        (state.isLoading = false), 
+        (state.isError = true);
+      })
+
+
+      .addCase(apiLogin.pending, (state) => {
+        (state.isLoading = true), 
+        (state.isError = false);
+      })
+      .addCase(apiLogin.fulfilled, (state, action) => {
+        (state.isLoading = false), 
+        (state.isSignedIn = true);
+        state.userData = action.payload.user;
+        state.token = action.payload.token
+      })
+      .addCase(apiLogin.rejected, state => {
         (state.isLoading = false), 
         (state.isError = true);
       })

@@ -1,8 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const instance = axios.create({
-    baseURL: 'https://connections-api.herokuapp.com/'
+export const instance = axios.create({
+    baseURL: 'https://connections-api.herokuapp.com/',
+    // headers: {
+    //   "Authorization" : `Bearer ${localStorage.getItem('token')}`
+    // }
 })
 
 export const setToken = (token) => {

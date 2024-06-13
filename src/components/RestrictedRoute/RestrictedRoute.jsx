@@ -9,7 +9,7 @@ const RestrictedRoute = ({children}) => {
     const isSignedIn = useSelector(selectIsSignedIn)
 
   return (
-    isSignedIn ? <Navigate to='/contacts' replace /> : children
+    isSignedIn ? <Navigate to='/products' replace /> : children
   )
 }
 
